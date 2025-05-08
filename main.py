@@ -18,14 +18,17 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        #calculate dt
+        dt = clock.tick(60)/1000
+        
+        player.update(dt)
+        
+        #draw everything
         screen.fill((0,0,0))
         player.draw(screen)
-        pygame.display.flip()
-        player.draw(screen)
-        #dt delta time in seconds
-        dt = clock.tick(60)/1000
-       
         
+        #display the frame
+        pygame.display.flip()
         
     print("Starting Asteroids!")
     print("Screen width:", SCREEN_WIDTH)
