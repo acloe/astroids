@@ -3,6 +3,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroid import *
@@ -33,6 +34,10 @@ def main():
         dt = clock.tick(60)/1000
         
         updatable.update(dt)
+        
+        for asteroid in asteroids:
+            if asteroid.collision(player):
+                sys.exit("Game Over!")
         
         #draw everything
         screen.fill((0,0,0))
